@@ -1,3 +1,4 @@
+// Adapted from: https://github.com/skriptum/Diatypst
 #let layouts = (
   "small": ("height": 9cm, "space": 1.4cm),
   "medium": ("height": 10.5cm, "space": 1.6cm),
@@ -68,21 +69,7 @@
 
         if heading != none {
           set align(top)
-          if (theme == "full") {
-            block(
-              width: 100%,
-              fill: title-color,
-              height: space * 0.85,
-              outset: (x: 0.5 * space)
-            )[
-              #set text(1.4em, weight: "bold", fill: bg-color)
-              #v(space / 2)
-              #heading.body
-              #if not heading.location().page() == page [
-                #{numbering("(i)", page - heading.location().page() + 1)}
-              ]
-            ]
-          } else if (theme == "normal") {
+          if (theme == "normal") {
             set text(1.4em, weight: "bold", fill: title-color)
             v(space / 2.2)
             heading.body
@@ -93,30 +80,7 @@
         }
     }
   // COUNTER
-    #if count == "dot" {
-      v(-space / 1.5)
-      set align(right + top)
-      context {
-        let last = counter(page).final().first()
-        let current = here().page()
-        // Before the current page
-        for i in range(1,current) {
-          link((page:i, x:0pt,y:0pt))[
-            #box(circle(radius: 0.08cm, fill: fill-color, stroke: 1pt+fill-color))
-          ]
-        }
-        // Current Page
-        link((page:current, x:0pt,y:0pt))[
-            #box(circle(radius: 0.08cm, fill: fill-color, stroke: 1pt+fill-color))
-          ]
-        // After the current page
-        for i in range(current+1,last+1) {
-          link((page:i, x:0pt,y:0pt))[
-            #box(circle(radius: 0.08cm, stroke: 1pt+fill-color))
-          ]
-        }
-      }
-    } else if count == "number" {
+    #if count == "number" {
       v(-space / 1.5)
       set align(right + top)
       context {
