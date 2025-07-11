@@ -98,46 +98,7 @@
     footer: [
       #if footer == true {
         set text(0.7em)
-        // Colored Style
-        if (theme=="full") {
-          columns(2, gutter:0cm)[
-            // Left side of the Footer
-            #align(left)[#block(
-              width: 100%,
-              outset: (left:0.5*space, bottom: 0cm),
-              height: 0.3*space,
-              fill: fill-color,
-              inset: (right:3pt)
-            )[
-              #v(0.1*space)
-              #set align(right)
-              #smallcaps()[#if footer-title != none {footer-title} else {title}]
-              ]
-            ]
-            // Right Side of the Footer
-            #align(right)[#block(
-              width: 100%,
-              outset: (right:0.5*space, bottom: 0cm),
-              height: 0.3*space,
-              fill: body-color,
-              inset: (left: 3pt)
-            )[
-              #v(0.1*space)
-              #set align(left)
-              #if footer-subtitle != none {
-                  footer-subtitle
-              } else if subtitle != none {
-                  subtitle
-              } else if authors != none {
-                    if (type(authors) != array) {authors = (authors,)}
-                    authors.join(", ", last: " and ")
-                  } else [#date]
-            ]
-          ]
-          ]
-        }
-        // Normal Styling of the Footer
-        else if (theme == "normal") {
+        if (theme == "normal") {
           box()[#line(length: 50%, stroke: 2pt+fill-color )]
           box()[#line(length: 50%, stroke: 2pt+body-color)]
           v(-0.3cm)
