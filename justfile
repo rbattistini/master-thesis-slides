@@ -6,8 +6,7 @@ sync:
     git commit -m "Sync {{`date +'%Y-%m-%d %H:%M:%S'`}}"
 
 tag VERSION:
-    TIMESTAMP=$(date +'%Y-%m-%dT%H%M%S')
-    git tag "{{VERSION}}-${TIMESTAMP}"
+    TIMESTAMP=$(date +'%Y-%m-%dT%H%M%S') && git tag "${VERSION}-${TIMESTAMP}"
 
 push VERSION:
     just sync
