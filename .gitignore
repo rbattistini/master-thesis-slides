@@ -1,5 +1,4 @@
 build
-.github
 .devenv
 *.pdf
 devenv.local.nix
