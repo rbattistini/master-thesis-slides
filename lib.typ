@@ -71,7 +71,7 @@
           set align(top)
           if (theme == "normal") {
             set text(1.4em, weight: "bold", fill: title-color)
-            v(space / 2.2)
+            v(space / 2.8)
             heading.body
             if not heading.location().page() == page [
               #{numbering("(i)", page - heading.location().page() + 1)}
@@ -81,7 +81,7 @@
     }
   // COUNTER
     #if count == "number" {
-      v(-space / 1.5)
+      v(-space / 1.52)
       set align(right + top)
       context {
         let last = counter(page).final().first()
@@ -105,7 +105,7 @@
           grid(
             columns: (1fr, 1fr),
             align: (right,left),
-            inset: 4pt,
+            inset: 3pt,
             [#smallcaps()[
               #if footer-title != none {footer-title} else {title}]],
             [#if footer-subtitle != none {
@@ -158,6 +158,7 @@
   }
 
   show raw.where(block: true): it => {
+    set text(size: 7.4pt)
     block(radius: 0.5em, fill: block-color,
           width: 100%, inset: 1em, it)
   }
@@ -170,8 +171,8 @@
   ))
 
   // Enum
-  let color_number(nrs) = text(fill:title-color)[*#nrs.*]
-  set enum(numbering: color_number)
+  //let color_number(nrs) = text(fill:title-color)[*#nrs.*]
+  //set enum(numbering: color_number)
 
   // Table
   show table: set table(
@@ -292,5 +293,4 @@ block(
   }
   // Normal Content
   content
-
 }

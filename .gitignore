@@ -1,4 +1,3 @@
-build
 .devenv
 *.pdf
 devenv.local.nix
