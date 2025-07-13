@@ -1,0 +1,340 @@
+%YAML 1.2
+---
+# Agent Speak Language syntax definition for Sublime Text
+name: Agent Speak Language
+file_extensions:
+  - asl
+  - jason
+scope: source.jason
+
+contexts:
+  main:
+    - include: comments
+    - include: include_block
+    - include: declaration
+    - include: event
+    - include: rule
+    - include: label
+    - include: goals
+    - include: context
+    - include: body
+
+  comments:
+    - match: '//'
+      scope: comment.line.double-slash.asl
+      push:
+        - meta_scope: comment.line.double-slash.asl
+        - match: '$'
+          pop: true
+    - match: '/\*'
+      scope: comment.block.asl
+      push:
+        - meta_scope: comment.block.asl
+        - match: '\*/'
+          pop: true
+
+  constants:
+    - match: '\b(true|false)\b'
+      scope: constant.character.language.asl
+    - match: '\d+'
+      scope: constant.character.numeric.integer.asl
+    - match: '(\d*\.\d+)([eE][+-]?[0-9]+)?'
+      scope: constant.character.numeric.float.asl
+
+  keywords:
+    - match: '\b(begin|end)\b'
+      scope: keyword.control.asl
+
+  operators:
+    - match: '(\+|-|\*|/|<|>|=<|>=|\\==|==|=:=|=)'
+      scope: keyword.control.flow.asl
+    - match: '(\|&\||\|\|\|)'
+      scope: keyword.control.flow.concurrency.asl
+    - match: '(&|\||(not\b))'
+      scope: keyword.control.flow.logic.asl
+    - match: '(div|mod)\b'
+      scope: keyword.control.flow.div.asl
+
+  strings:
+    - match: '"'
+      scope: string.quoted.double.asl
+      push:
+        - meta_scope: string.quoted.double.asl
+        - match: '"'
+          pop: true
+
+  include_block:
+    - match: '\s*\{'
+      push:
+        - match: '\s*\}'
+          pop: true
+        - match: '\s*(include|begin|end|namespace|global|local)\b'
+          scope: keyword.control.flow.asl
+        - include: strings
+        - match: '[a-z][\w]*'
+          scope: support.type.atom.asl
+
+  declaration:
+    - match: '\s*!'
+      scope: keyword.other.asl
+      push:
+        - match: '\.\s'
+          scope: keyword.other.asl
+          pop: true
+        - include: module
+        - match: '[a-z]\w*\b'
+          scope: support.function.goal.asl
+        - match: '[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+    - match: '~?[a-z]\w*\b'
+      scope: support.type.atom.asl
+    - include: terms
+    - match: '\s*\.\s'
+      scope: keyword.other.asl
+
+  goals:
+    - match: '\s*!!?'
+      scope: keyword.other.achieve.asl
+      push:
+        - match: '(?=(\.\s|;))'
+          pop: true
+        - include: module
+        - match: '[a-z]\w*\b'
+          scope: support.function.goal.achievement.asl
+        - match: '[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+        - include: annotation
+    - match: '\s*\?'
+      scope: keyword.other.test.asl
+      push:
+        - match: '(?=(\.\s|;))'
+          pop: true
+        - include: module
+        - match: '[~]?[a-z]\w*\b'
+          scope: support.function.goal.test.asl
+        - match: '[~]?[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+        - include: annotation
+
+  rule:
+    - match: '\s*(:-)'
+      scope: keyword.other.operator.asl
+      push:
+        - match: '\.\s'
+          scope: keyword.other.operator.asl
+          pop: true
+        - include: comments
+        - include: operators
+        - include: module
+        - include: action
+        - match: '~?[a-z]\w*\b'
+          scope: support.type.atom.asl
+        - include: constants
+        - include: strings
+        - include: variables
+        - include: terms
+
+  event:
+    - match: '\s*(-|\+|[\^])!'
+      scope: keyword.other.event.achievent.asl
+      push:
+        - meta_scope: meta.function.plan.event
+        - match: '\s*((?=(: |(<-)))|\.\s)'
+          scope: keyword.other.asl
+          pop: true
+        - include: comments
+        - include: module
+        - include: annotation
+        - match: '!?[a-z]\w*\b'
+          scope: entity.name.function.event.achievement.asl
+        - match: '!?[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+    - match: '\s*!'
+      scope: keyword.other.event.achievent.asl
+      push:
+        - meta_scope: meta.function.plan.event
+        - match: '\s*((?=(: |(<-)))|\.\s)'
+          scope: keyword.other.asl
+          pop: true
+        - include: comments
+        - include: module
+        - include: annotation
+        - match: '[a-z]\w*\b'
+          scope: entity.name.function.event.achievement.asl
+        - match: '[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+    - match: '\s*(-|\+)\?'
+      scope: keyword.other.event.test.asl
+      push:
+        - match: '\s*((?=(: |(<-)))|\.\s)'
+          scope: keyword.other.asl
+          pop: true
+        - include: comments
+        - include: module
+        - include: annotation
+        - match: '~?[a-z]\w*\b'
+          scope: entity.name.function.event.test.asl
+        - match: '~?[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+    - match: '(-|\+)'
+      scope: keyword.other.event.belief.asl
+      push:
+        - match: '\s*((?=(: |(<-)))|\s)'
+          scope: keyword.other.asl
+          pop: true
+        - include: comments
+        - include: module
+        - include: annotation
+        - match: '~?[a-z]\w*\b'
+          scope: entity.name.function.event.belief.asl
+        - match: '~?[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: terms
+
+  body:
+    - match: '\s*(<-)\s*'
+      scope: keyword.other.operator.asl
+      push:
+        - meta_scope: meta.function.plan.body
+        - match: '\s*\.\s'
+          scope: keyword.other.operator.asl
+          pop: true
+        - include: comments
+        - include: constants
+        - include: strings
+        - include: operators
+        - match: '\b(if|else|elif|while|for)\b'
+          scope: keyword.control.flow.asl
+        - include: goals
+        - include: module
+        - include: belief
+        - include: action
+        - include: operation
+        - include: variables
+        - match: ';\s'
+          scope: keyword.other.operator.asl
+
+  context:
+    - match: '\s*:\s*'
+      scope: keyword.other.operator.asl
+      push:
+        - meta_scope: meta.function.plan.context
+        - match: '\s*((?=(<-))|\.\s)'
+          scope: keyword.other.operator.asl
+          pop: true
+        - include: comments
+        - include: module
+        - include: constants
+        - include: strings
+        - include: operators
+        - match: '[a-z][\w]*'
+          scope: support.type.atom.asl
+        - include: action
+        - include: annotation
+        - include: variables
+        - include: terms
+
+  annotation:
+    - match: '\s*\['
+      push:
+        - meta_scope: meta.function.annotation
+        - match: '\s*\]'
+          pop: true
+        - match: 'atomic'
+          scope: keyword.control.flow.asl
+        - include: module
+        - include: variables
+        - include: constants
+        - include: strings
+        - match: '[a-z][\w]*'
+          scope: support.type.atom.asl
+        - include: terms
+
+  action:
+    - match: '\.([a-z]\w*)(\.\\w+)*'
+      scope: support.function.internal_action.std.asl
+    - match: '([a-z]\w*)(\.\\w+)+'
+      scope: entity.name.function.internal_action.asl
+    - include: terms
+    - include: annotation
+
+  operation:
+    - match: '([a-z]\w*)'
+      scope: entity.name.function.operation.asl
+    - include: terms
+    - include: annotation
+
+  belief:
+    - match: '\s*(-\+?|\+)'
+      scope: keyword.other.belief.asl
+      push:
+        - match: '(?=(\.\s|;))'
+          pop: true
+        - include: module
+        - match: '~?[a-z]\w*\b'
+          scope: entity.name.function.belief.asl
+        - match: '~?[A-Z]\w*\b'
+          scope: variable.other.asl
+        - include: annotation
+        - include: terms
+
+  module:
+    - match: '([a-z][\w]*)(?=(::))'
+      scope: support.type.module.asl
+    - match: '([A-Z][\w]*)(?=(::))'
+      scope: variable.other.asl
+    - match: '\s*::'
+      scope: keyword.other.punctuation.asl
+
+  label:
+    - match: '\s*@'
+      scope: keyword.other.punctuation.asl
+      push:
+        - match: '\s*\s'
+          pop: true
+        - match: '[a-z]\w*\b'
+          scope: support.type.label.asl
+        - include: annotation
+        - include: terms
+
+  terms:
+    - match: '\s*\(\s*'
+      push:
+        - match: '\s*\)\s*'
+          pop: true
+        - include: list
+        - include: module
+        - include: strings
+        - include: constants
+        - include: operators
+        - match: '~?[a-z][\w]*'
+          scope: support.type.atom.asl
+        - include: variables
+        - include: terms
+
+  list:
+    - match: '\s*\[\s*'
+      push:
+        - meta_scope: meta.function.list
+        - match: '\s*\]\s*'
+          pop: true
+        - match: '\s*\|\s*'
+          scope: keyword.control.flow.tail.asl
+        - include: strings
+        - include: constants
+        - include: operators
+        - match: '~?[a-z][\w]*'
+          scope: support.type.atom.asl
+        - include: variables
+
+  variables:
+    - match: '\b[A-Z]\w*\b'
+      scope: variable.other.asl
+    - match: '\b_\w*\b'
+      scope: variable.other.asl

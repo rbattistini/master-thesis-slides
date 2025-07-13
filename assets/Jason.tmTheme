@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Agent Speak Light</string>
+	<key>author</key>
+	<string>Custom Light Theme for Agent Speak Language</string>
+	<key>uuid</key>
+	<string>B2C3D4E5-F6G7-8901-BCDE-2345678901BC</string>
+	<key>settings</key>
+	<array>
+		<!-- Global Settings -->
+		<dict>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#fafafa</string>
+				<key>foreground</key>
+				<string>#383a42</string>
+				<key>caret</key>
+				<string>#526fff</string>
+				<key>selection</key>
+				<string>#c2d4f0</string>
+				<key>selectionForeground</key>
+				<string>#383a42</string>
+				<key>lineHighlight</key>
+				<string>#f0f0f0</string>
+				<key>findHighlight</key>
+				<string>#ffe792</string>
+				<key>findHighlightForeground</key>
+				<string>#383a42</string>
+				<key>activeGuide</key>
+				<string>#d0d0d0</string>
+				<key>bracketsForeground</key>
+				<string>#a626a4</string>
+				<key>bracketsOptions</key>
+				<string>underline</string>
+				<key>bracketContentsForeground</key>
+				<string>#a626a4</string>
+				<key>bracketContentsOptions</key>
+				<string>underline</string>
+				<key>tagsOptions</key>
+				<string>stippled_underline</string>
+				<key>invisibles</key>
+				<string>#d0d0d0</string>
+				<key>guide</key>
+				<string>#e5e5e5</string>
+				<key>stackGuide</key>
+				<string>#e0e0e0</string>
+			</dict>
+		</dict>
+
+		<!-- Comments -->
+		<dict>
+			<key>name</key>
+			<string>Comment</string>
+			<key>scope</key>
+			<string>comment</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a0a1a7</string>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+
+		<!-- Strings -->
+		<dict>
+			<key>name</key>
+			<string>String</string>
+			<key>scope</key>
+			<string>string</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#50a14f</string>
+			</dict>
+		</dict>
+
+		<!-- Numbers -->
+		<dict>
+			<key>name</key>
+			<string>Number</string>
+			<key>scope</key>
+			<string>constant.numeric</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#986801</string>
+			</dict>
+		</dict>
+
+		<!-- Boolean Constants -->
+		<dict>
+			<key>name</key>
+			<string>Boolean</string>
+			<key>scope</key>
+			<string>constant.character.language.asl</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0184bc</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Keyword</string>
+			<key>scope</key>
+			<string>keyword</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a626a4</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Control Flow Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Control Flow</string>
+			<key>scope</key>
+			<string>keyword.control</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a626a4</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Operators -->
+		<dict>
+			<key>name</key>
+			<string>Operator</string>
+			<key>scope</key>
+			<string>keyword.operator, keyword.other.operator</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#383a42</string>
+			</dict>
+		</dict>
+
+		<!-- Flow Operators -->
+		<dict>
+			<key>name</key>
+			<string>Flow Operators</string>
+			<key>scope</key>
+			<string>keyword.control.flow</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0184bc</string>
+			</dict>
+		</dict>
+
+		<!-- Concurrency Operators -->
+		<dict>
+			<key>name</key>
+			<string>Concurrency Operators</string>
+			<key>scope</key>
+			<string>keyword.control.flow.concurrency</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#e45649</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Logic Operators -->
+		<dict>
+			<key>name</key>
+			<string>Logic Operators</string>
+			<key>scope</key>
+			<string>keyword.control.flow.logic</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0997b3</string>
+			</dict>
+		</dict>
+
+		<!-- Variables -->
+		<dict>
+			<key>name</key>
+			<string>Variable</string>
+			<key>scope</key>
+			<string>variable</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#e45649</string>
+			</dict>
+		</dict>
+
+		<!-- Atoms -->
+		<dict>
+			<key>name</key>
+			<string>Atom</string>
+			<key>scope</key>
+			<string>support.type.atom</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#4078f2</string>
+			</dict>
+		</dict>
+
+		<!-- Goals -->
+		<dict>
+			<key>name</key>
+			<string>Goal</string>
+			<key>scope</key>
+			<string>support.function.goal</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#c18401</string>
+				<key>fontStyle</key>
+				<string>normal</string>
+			</dict>
+		</dict>
+
+		<!-- Achievement Goals -->
+		<dict>
+			<key>name</key>
+			<string>Achievement Goal</string>
+			<key>scope</key>
+			<string>support.function.goal.achievement</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#b07219</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Test Goals -->
+		<dict>
+			<key>name</key>
+			<string>Test Goal</string>
+			<key>scope</key>
+			<string>support.function.goal.test</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0997b3</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Events -->
+		<dict>
+			<key>name</key>
+			<string>Event</string>
+			<key>scope</key>
+			<string>entity.name.function.event</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a626a4</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Achievement Events -->
+		<dict>
+			<key>name</key>
+			<string>Achievement Event</string>
+			<key>scope</key>
+			<string>entity.name.function.event.achievement</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#b83398</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Test Events -->
+		<dict>
+			<key>name</key>
+			<string>Test Event</string>
+			<key>scope</key>
+			<string>entity.name.function.event.test</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0997b3</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Belief Events -->
+		<dict>
+			<key>name</key>
+			<string>Belief Event</string>
+			<key>scope</key>
+			<string>entity.name.function.event.belief</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#50a14f</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Beliefs -->
+		<dict>
+			<key>name</key>
+			<string>Belief</string>
+			<key>scope</key>
+			<string>entity.name.function.belief</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#50a14f</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Actions -->
+		<dict>
+			<key>name</key>
+			<string>Action</string>
+			<key>scope</key>
+			<string>entity.name.function.internal_action</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#4078f2</string>
+			</dict>
+		</dict>
+
+		<!-- Standard Actions -->
+		<dict>
+			<key>name</key>
+			<string>Standard Action</string>
+			<key>scope</key>
+			<string>support.function.internal_action.std</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#986801</string>
+			</dict>
+		</dict>
+
+		<!-- Operations -->
+		<dict>
+			<key>name</key>
+			<string>Operation</string>
+			<key>scope</key>
+			<string>entity.name.function.operation</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#4078f2</string>
+			</dict>
+		</dict>
+
+		<!-- Modules -->
+		<dict>
+			<key>name</key>
+			<string>Module</string>
+			<key>scope</key>
+			<string>support.type.module</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0997b3</string>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+
+		<!-- Labels -->
+		<dict>
+			<key>name</key>
+			<string>Label</string>
+			<key>scope</key>
+			<string>support.type.label</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a626a4</string>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+
+		<!-- Punctuation -->
+		<dict>
+			<key>name</key>
+			<string>Punctuation</string>
+			<key>scope</key>
+			<string>keyword.other.punctuation</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#383a42</string>
+			</dict>
+		</dict>
+
+		<!-- Event Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Event Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.event</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#e45649</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Achievement Event Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Achievement Event Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.event.achievent</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#ca1243</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Test Event Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Test Event Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.event.test</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0997b3</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Belief Event Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Belief Event Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.event.belief</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#50a14f</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Belief Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Belief Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.belief</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#50a14f</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Achievement Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Achievement Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.achieve</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#c18401</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Test Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Test Keywords</string>
+			<key>scope</key>
+			<string>keyword.other.test</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0997b3</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- List Tail -->
+		<dict>
+			<key>name</key>
+			<string>List Tail</string>
+			<key>scope</key>
+			<string>keyword.control.flow.tail</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#e45649</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+
+		<!-- Meta Scopes -->
+		<dict>
+			<key>name</key>
+			<string>Meta Function</string>
+			<key>scope</key>
+			<string>meta.function</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#383a42</string>
+			</dict>
+		</dict>
+
+		<!-- Annotations -->
+		<dict>
+			<key>name</key>
+			<string>Annotation</string>
+			<key>scope</key>
+			<string>meta.function.annotation</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a626a4</string>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+
+		<!-- Lists -->
+		<dict>
+			<key>name</key>
+			<string>List</string>
+			<key>scope</key>
+			<string>meta.function.list</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#383a42</string>
+			</dict>
+		</dict>
+
+		<!-- Division/Modulo Keywords -->
+		<dict>
+			<key>name</key>
+			<string>Division Modulo</string>
+			<key>scope</key>
+			<string>keyword.control.flow.div</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a626a4</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
