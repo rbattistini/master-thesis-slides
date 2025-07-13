@@ -1,3 +1,4 @@
 .devenv
 *.pdf
 devenv.local.nix
+.devenv.flake.nix
