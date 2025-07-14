@@ -46,7 +46,7 @@ Given the goal of augmenting BDI agents with *autonomous plan generation* capabi
 == Past Solutions for Plan Generation in BDI Agents
 
 - In AgentSpeak(L) the behavior of an agent is defined *at design time* by the developer;
-  - usually actions' preconditions and effects are not encoded.
+  - #text(1.0em, fill:luma(60%))[usually actions' preconditions and effects are not encoded.]
 
 - Past solutions involved using first-principle planners, like STRIPS;
   - #text(1.0em, fill:luma(60%))[*actions* are defined by preconditions and effects;]
