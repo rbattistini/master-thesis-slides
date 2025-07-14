@@ -2,6 +2,7 @@
 #let titleColor = blue.darken(60%)
 #show: slides.with(
   title: "Exploiting GenAI for Plan\n Generation in BDI Agents",
+  subtitle: "\nAccepted at ECAI 2025",
   date: "10.07.2025",
   authors: "Riccardo Battistini",
   ratio: 16 / 9,
@@ -17,19 +18,19 @@
 
 == Goal of the thesis
 
-This work proposes a novel framework that extends the AgentSpeak(L) reasoning cycle with generative capabilities, enabling agents to synthesize plans on-the-fly.
+This work proposes a novel framework that extends the AgentSpeak(L) reasoning cycle with generative capabilities, enabling agents to *synthesize plans on-the-fly*.
 
 This framework:
 - preserves the strengths of the BDI model;
-  - theoretical foundation;
-  - programming paradigm;
-  - verifiable reasoning;
+  - #text(1.0em, fill:luma(60%))[theoretical foundation];
+  - #text(1.0em, fill:luma(60%))[programming paradigm];
+  - #text(1.0em, fill:luma(60%))[verifiable reasoning];
 - augments the existing BDI agents rather than replacing them;
-  - unlike LLM agents, they are not fully generative and language-driven.
+  - #text(1.0em, fill:luma(60%))[unlike LLM agents, they are not fully generative and language-driven.]
 
 == Research Questions
 
-Given the goal of augmenting BDI agents with autonomous plan generation capabilities using LLMs, the following research questions have been identified.
+Given the goal of augmenting BDI agents with *autonomous plan generation* capabilities using *LLMs*, the following research questions have been identified.
 
 #enum(
   tight: false,
@@ -44,20 +45,20 @@ Given the goal of augmenting BDI agents with autonomous plan generation capabili
 
 == Past Solutions for Plan Generation in BDI Agents
 
-- In AgentSpeak(L) the behavior of an agent is defined at design time by the developer;
+- In AgentSpeak(L) the behavior of an agent is defined *at design time* by the developer;
   - usually actions' preconditions and effects are not encoded.
 
 - Past solutions involved using first-principle planners, like STRIPS;
-  - *actions* are defined by preconditions and effects;
-  - a *plan* is a sequence of actions from an initial state to a goal;
-  - the *state* is expressed as a set of fluents (logic facts);
-  - the *goal* is defined as a set of predicates.
+  - #text(1.0em, fill:luma(60%))[*actions* are defined by preconditions and effects;]
+  - #text(1.0em, fill:luma(60%))[a *plan* is a sequence of actions from an initial state to a goal;]
+  - #text(1.0em, fill:luma(60%))[the *state* is expressed as a set of fluents (logic facts);]
+  - #text(1.0em, fill:luma(60%))[the *goal* is defined as a set of predicates.]
 
 - They require mapping first-principle planning to the BDI model;
-  - *actions* are named procedures that create side-effects;
-  - a *plan* has a trigger, a guard and a body;
-  - the *state* is expressed as a set of beliefs;
-  - the *goal* is the name of something to achieve.
+  - #text(1.0em, fill:luma(60%))[*actions* are named procedures that create side-effects;]
+  - #text(1.0em, fill:luma(60%))[a *plan* has a trigger, a guard and a body;]
+  - #text(1.0em, fill:luma(60%))[the *state* is expressed as a set of beliefs;]
+  - #text(1.0em, fill:luma(60%))[the *goal* is the name of something to achieve.]
 
 = Contribution
 
@@ -67,7 +68,7 @@ Given the goal of augmenting BDI agents with autonomous plan generation capabili
 
 A PGP involves:
 
-+ encoding the agent's current state into a structured prompt comprehensible to the LLM;
++ encoding the agent's state into a *structured prompt* comprehensible to the LLM;
 + parsing the LLM output to extract the generated plans.
 
 The PGP is modelled as a new action `generate_plan(G)` that the agent can invoke whenever it needs to generate a plan for a given goal `G`.
@@ -78,18 +79,18 @@ The PGP can be triggered in two ways.
 
 #list(
   [*On-demand PGP*
-    - the agent's programmer decides when the agent should trigger the PGP;
+    - #text(1.0em, fill:luma(60%))[the agent's programmer decides when the agent should trigger the PGP];
   ],
   [*Reactive PGP*
-    - it is implicitly triggered by the agent's control loop whenever an event `E` occurs and the agent has no relevant plan for it, preventing the current intention from failing.
+    - #text(1.0em, fill:luma(60%))[it is implicitly triggered by the agent's control loop whenever an event `E` occurs and the agent has no relevant plan for it, preventing the current intention from failing.]
   ],
 )
 
-Either way, the PGP may generate plans that use `generate_plan(G)` in their body or invent new subgoals for which no plans exist, so generated plans may themselves trigger a new PGP to generate additional plans, when executed.
+Either way, the PGP may generate plans that use `generate_plan(G)` in their body or invent new subgoals for which no plans exist, so *generated plans may themselves trigger a new PGP* to generate additional plans, when executed.
 
 == Knowledge exchange of a BDI Agent with an LLM
 
-The minimal set of relevant information to build the prompt that was identified is:
+The minimal set of relevant *information to build the prompt* that was identified is:
 
 #enum(
   tight: true,
@@ -111,12 +112,12 @@ The minimal set of relevant information to build the prompt that was identified 
   [
     The programmer configures the generation process and describes the plans, rather than encode them, by:
     
-    + defining a prompt template;
-    + choosing the generation strategy;
-    + selecting only the most relevant information with filters;
-    + writing natural language documentation.
+    + defining a *prompt template*;
+    + choosing the *generation strategy*;
+    + selecting the most relevant information with *filters*;
+    + writing natural language *documentation*.
 
-    The syntax is extended to allow describing beliefs, goals, actions and plans.
+    The syntax is extended to describe beliefs, goals, actions and plans.
   ],
   [
     ```kt
@@ -148,7 +149,7 @@ The minimal set of relevant information to build the prompt that was identified 
   #set align(center)
   #image("assets/world.svg", height: 4.1cm)
   #set align(left)
-  The environment is a gridworld which contains objects, obstacles and a robot. The robot has the objective of reaching the home object.
+  The environment is a *gridworld* which contains objects, obstacles and a robot. The robot has the objective of reaching the home object.
   ],[
   #raw(
 "direction(north).
@@ -178,30 +179,30 @@ there_is(box, north_east).
 == Experimental Setup
 
 - Framework
-  - JaKtA, a modern BDI technology based on Kotlin
+  - #text(1.0em, fill:luma(60%))[JaKtA, a modern BDI technology based on Kotlin]
 - Four LLMs
-  - Claude Sonnet 4, Deepseek V3 Chat, GPT 4.1 and Gemini 2.5 Flash
+  - #text(1.0em, fill:luma(60%))[Claude Sonnet 4, Deepseek V3 Chat, GPT 4.1 and Gemini 2.5 Flash]
 - Three prompting configurations
-  - No Hints, Only Hints, Hints and Remarks
+  - #text(1.0em, fill:luma(60%))[No Hints, Only Hints, Hints and Remarks]
 - Three temperature values
-  - 0.1, 0.5 and 0.9
+  - #text(1.0em, fill:luma(60%))[0.1, 0.5 and 0.9]
 - Ten attempts per configuration
-  - 360 experimental runs in total
+  - #text(1.0em, fill:luma(60%))[360 experimental runs in total]
 
 == Experimental Metrics
 
-- *Task Success Rate (TSR)*
-  - Did the robot successfully reach home?
-- *Plan/Context Complexity (PC/CC)*
-  - How many plans and conditions were generated?
-- *Generalization Count (GC)*
-  - How many plans used variables?
-- *Novelty (NGC/NBC)*
-  - Did the LLM invent new goals/beliefs?
-- *Semantic Alignment (GSA/BSA)*
-  - Did the LLM use existing concepts correctly?
-- *Plan-Reference Alignment Score (PRAS)*
-  - An LLM-as-judge score comparing generated plans to an expert-designed optimal plan.
+- *Task Success Rate* (TSR)
+  - #text(1.0em, fill:luma(60%))[Did the robot successfully reach home?]
+- *Plan/Context Complexity* (PC/CC)
+  - #text(1.0em, fill:luma(60%))[How many plans and conditions were generated?]
+- *Generalization Count* (GC)
+  - #text(1.0em, fill:luma(60%))[How many plans used variables?]
+- *Novelty* (NGC/NBC)
+  - #text(1.0em, fill:luma(60%))[Did the LLM invent new goals/beliefs?]
+- *Semantic Alignment* (GSA/BSA)
+  - #text(1.0em, fill:luma(60%))[Did the LLM use existing concepts correctly?]
+- *Plan-Reference Alignment Score* (PRAS)
+  - #text(1.0em, fill:luma(60%))[An LLM-as-judge score comparing generated plans to an expert-designed optimal plan.]
 
 == Experimental Results
 
@@ -218,8 +219,8 @@ there_is(box, north_east).
     [Claude Sonnet 4], [Hints and Remarks], [0.5], [77.78],
   )
   #set align(left)
-  LLMs are promising for plan generation, provided that appropriate parameter configurations are given and that the agents' programmer documents the domain with hints. 
-  Providing remarks significantly improves the results. 
+  LLMs are promising for plan generation, provided that appropriate parameter configurations are given and that the agents' programmer documents the domain with *hints*. 
+  Providing *remarks* significantly improves the results. 
 
   #colbreak()
   #columns(2)[
@@ -240,19 +241,19 @@ there_is(box, north_east).
   tight: false,
   [
     *What information would LLMs require to generate BDI plans?*
-      - Structured prompts that includes goals, beliefs, actions, and a description of the BDI operational semantics.
+      - #text(1.0em, fill:luma(60%))[Structured prompts that includes goals, beliefs, actions, and a description of the BDI operational semantics.]
   ],
   [
     *How should knowledge be transferred between LLMs and BDI agents?*
-      - Structured prompts with parsable outputs, using format-restricting instructions.
+      - #text(1.0em, fill:luma(60%))[Structured prompts with parsable outputs, using format-restricting instructions.]
   ],
   [
     *How does automatic plan generation impact BDI agents operation and specification?*
-      - Shifts from exhaustive plan encoding to domain knowledge provision with natural language.
+      - #text(1.0em, fill:luma(60%))[Shifts from exhaustive plan encoding to domain knowledge provision with natural language.]
   ],
   [
     *Can LLMs generate reusable BDI plans?*
-      - Shows promise for general, variable-based plans despite performance variability.
+      - #text(1.0em, fill:luma(60%))[Shows promise for general, variable-based plans despite performance variability.]
   ],
 )
 
@@ -260,13 +261,13 @@ there_is(box, north_east).
 
 #enum(
   tight: false,
-[Plan repair and refinement mechanisms
- - with runtime verification mechanism for plan validation and eviction],
-[Testing scenarios with partial observability and dynamic environments
- - to evaluate adaptability and generalization],
-[Ablation studies for prompt effectiveness under varying conditions
- - different LLM sampling parameters and decoding strategies
- - robustness to developer inaccuracies 
- - different context filtering strategies],
-[Different prompt structure and output syntaxes]
+[*Plan repair and refinement* mechanisms
+ - #text(1.0em, fill:luma(60%))[with runtime verification mechanism for plan validation and eviction]],
+[*Testing scenarios* with partial observability and dynamic environments
+ - #text(1.0em, fill:luma(60%))[to evaluate adaptability and generalization]],
+[*Ablation studies* for prompt effectiveness under varying conditions
+ - #text(1.0em, fill:luma(60%))[different LLM sampling parameters and decoding strategies]
+ - #text(1.0em, fill:luma(60%))[robustness to developer inaccuracies]
+ - #text(1.0em, fill:luma(60%))[different context filtering strategies]],
+[Different *prompt structure* and *output syntaxes*]
 )

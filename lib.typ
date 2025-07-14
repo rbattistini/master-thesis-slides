@@ -131,7 +131,7 @@
     set page(header: none,footer: none, margin: 0cm)
     set align(horizon)
       grid(
-        columns: (1fr, 3fr),
+        columns: (1fr, 3.3fr),
         inset: 10pt,
         align: (right,left),
         fill: (title-color, bg-color),
@@ -244,7 +244,7 @@ block(
   align(center + horizon)[
     #text(2.0em, weight: "bold", fill: bg-color, title)
     #if subtitle != none {
-      text(1.4em, fill: bg-color, weight: "bold")[ \ #subtitle]
+      text(1.15em, fill: bg-color, weight: "bold")[ \ #subtitle]
     }
   ]
 )
@@ -263,7 +263,7 @@ block(
       ]
     ]
     
-    #v(2em)
+    #v(1.8em)
     
     // People information in grid layout
     #grid(
